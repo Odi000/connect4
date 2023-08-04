@@ -2,11 +2,16 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: './src/script.js',
+    mode: 'production',
+    context: path.resolve(__dirname, 'src'),
+    entry: './script.js',
     devtool: 'inline-source-map',
+    devServer: {
+        static: '../dist',
+    },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html',
+            template: './index.html',
         })
     ],
     output: {
@@ -14,10 +19,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
-    rules: [
-        {
-            test: /.css$/i,
-            use: ['style-loader','css-loader']
-        }
-    ]
+    module: {
+        rules: [
+            {
+                test: /.css$/i,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    }
 }

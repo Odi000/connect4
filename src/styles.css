@@ -1,0 +1,14 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 10px;
+}
+
+body{
+    background-color: rgb(28, 28, 28);
+}
